@@ -1,0 +1,244 @@
+body {
+  background: #cafcf9;
+}
+
+h1,
+h2,
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-family: "Roboto Slab", serif;
+  margin-bottom: 5px;
+  font-weight: normal;
+  text-align: center;
+}
+
+form input {
+  border: 2px solid black;
+  font-family: "Roboto Slab", serif;
+  line-height: 20px;
+  font-size: 14px;
+  margin: 10px 0px 0px;
+  padding: 10px 10px;
+  font-weight: bold;
+}
+
+.currentday,
+.container,
+.row,
+.forecast,
+.card-img-top,
+.card-body,
+.card-text,
+.card .forecast_day,
+.forecast_emo,
+.forecast_hl,
+.cats,
+.cat_results,
+#cur-temp,
+#cur-emoji,
+#cur-emoji-desc,
+#high_low {
+  margin: 0px 0px;
+  padding: 0px 0px;
+  font-size: 12px;
+}
+
+.card-text,
+.cats,
+.cat_results,
+.forecast_day,
+.forecast_emo,
+.forecast_hl,
+.currentday {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.card-body,
+.card-text {
+  line-height: 10px;
+}
+
+.container,
+.card {
+  width: 100%;
+}
+
+.currentday,
+#cur-day-time {
+  margin-left: 5px;
+  text-align: left;
+  padding: 0px 0px;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.container {
+  box-shadow: 0px 0px 15px rgb(36, 34, 34);
+  border: 3px solid rgb(11, 11, 43);
+  padding: 10px 20px 20px 20px;
+  background: #f7edb4;
+  border-radius: 15px;
+  margin: 0px auto;
+  max-width: 550px;
+  margin-top: 15px;
+}
+
+.card-text {
+  padding-bottom: 10px;
+}
+
+.card {
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0px 0px 4px black;
+}
+
+.cats {
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+}
+
+.forecast_day {
+  font-size: 12px;
+}
+
+.forecast_emo {
+  font-size: 42px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.forecast_hl {
+  font-size: 10px;
+  text-align: center;
+}
+
+#cur-temp,
+#cur-emoji {
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 50px;
+  font-family: "Roboto", sans-serif;
+  margin: 0px 0px;
+}
+
+#cur-emoji-desc,
+#high_low {
+  font-family: monospace;
+}
+
+#entry-line {
+  background: #e3e2fa;
+  vertical-align: middle;
+  font-style: italic;
+  width: 60%;
+  margin-right: 5px;
+  box-shadow: 0px 0px 4px black;
+  padding: 5px 10px;
+}
+
+#submit-button {
+  box-shadow: 0px 0px 4px black;
+  vertical-align: middle;
+  transition: all 150ms ease;
+  font-family: "Roboto Slab";
+  background: #fff;
+  font-weight: normal;
+  font-size: 15px;
+  width: 29%;
+  padding: 5px 10px;
+}
+
+#submit-button:hover {
+  background: #ae9ac0;
+}
+
+#current-location-button {
+  box-shadow: 0px 0px 4px black;
+  transition: all 150ms ease;
+  font-family: "Roboto Slab";
+  background: #fff;
+  border-radius: 50px;
+  font-weight: normal;
+  font-size: 10px;
+  text-align: center;
+  vertical-align: middle;
+  width: 5%;
+  max-height: 15px;
+  margin-right: 5px;
+}
+
+#current-location-button:hover {
+  background: #ae9ac0;
+}
+
+#high_low {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+#cur_emoji_desc {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.converter {
+  font-family: monospace;
+  padding: 5px 0px;
+  margin: 0px auto;
+  margin-top: 2px;
+  text-align: center;
+  vertical-align: center;
+  font-size: 12px;
+  box-shadow: 0px 0px 4px black;
+  width: 100%;
+  height: 100%;
+}
+
+div.button {
+  padding: 0px 0px;
+  vertical-align: middle;
+}
+
+.col-1 {
+  padding: 0px 5px;
+}
+
+.reduce-padding {
+  padding: 0px 0px;
+  text-align: center;
+}
+
+.col-3 {
+  padding: 0px 10px;
+}
+
+.subtext {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.col-2 {
+  text-align: center;
+}
