@@ -181,26 +181,26 @@ buttonConverterF.addEventListener("click", confirmUnitC);
     function updateSunrise (newSunrise) {
         let oldSunrise = document.querySelector("#sunrise");
             newSunrise = newSunrise * 1000;
-            dateSunrise = new Date(newSunrise);
-            hoursSunrise = dateSunrise.getHours();
-            convertedHour = convertHour(hoursSunrise);
-            minutesSunrise = dateSunrise.getMinutes();
-            convertedMinute = convertMinutes(minutesSunrise);
-            morningOrAfternoon = defineAM_PM(hoursSunrise);
-            fullSunrise = `${convertedHour}:${convertedMinute}${morningOrAfternoon}`;
+        let dateSunrise = new Date(newSunrise);
+        let hoursSunrise = dateSunrise.getHours();
+        let convertedHour = convertHour(hoursSunrise);
+        let minutesSunrise = dateSunrise.getMinutes();
+        let convertedMinute = convertMinutes(minutesSunrise);
+        let morningOrAfternoon = defineAM_PM(hoursSunrise);
+        let fullSunrise = `${convertedHour}:${convertedMinute}${morningOrAfternoon}`;
             oldSunrise.innerHTML = fullSunrise;
     }
 
     function updateSunset (newSunset) {
         let oldSunset = document.querySelector("#sunset");
             newSunset = newSunset * 1000;
-            dateSunset = new Date(newSunset);
-            hoursSunset = dateSunset.getHours();
-            convertedHour = convertHour(hoursSunset);
-            minutesSunset = dateSunset.getMinutes();
-            convertedMinute = convertMinutes(minutesSunset);
-            morningOrAfternoon = defineAM_PM(hoursSunset);
-            fullSunset = `${convertedHour}:${convertedMinute}${morningOrAfternoon}`;
+        let dateSunset = new Date(newSunset);
+        let hoursSunset = dateSunset.getHours();
+        let convertedHour = convertHour(hoursSunset);
+        let minutesSunset = dateSunset.getMinutes();
+        let convertedMinute = convertMinutes(minutesSunset);
+        let morningOrAfternoon = defineAM_PM(hoursSunset);
+        let fullSunset = `${convertedHour}:${convertedMinute}${morningOrAfternoon}`;
             oldSunset.innerHTML = fullSunset;
     }
     
@@ -241,13 +241,13 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         axios.get(url).then(getStats);
         
         //this piece retriggers the updating of the current date
-        dateDisplay = document.querySelector("#cur-day-time");
+        let dateDisplay = document.querySelector("#cur-day-time");
         dateDisplay.innerHTML = showDayTime(new Date);
     }   
 
 //this is the Event Listener button for the Change City Button
-let changeCity = document.querySelector("#submit-button");
-changeCity.addEventListener("click", triggerApi);
+    let changeCity = document.querySelector("#submit-button");
+    changeCity.addEventListener("click", triggerApi);
 
 
     function initialCity (){
