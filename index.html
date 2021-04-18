@@ -32,146 +32,148 @@
         <br />
 
         <h1 id="selected-city">
-            New York City
+            ""
         </h1>
-        <div class="currentday">
-            <p id="cur-day-time">Wednesday, 7:00PM</p>
+        <div>
+            <span id="cur-day-time">""</span>
         </div>
         <br />
     
         <div class="row">
             <div class="col-1">
-                <div class="row">
-                    <div class="button">
-                        <button class="converter" id="celsius">
-                            C
-                        </button>
-                    </div>
+                <div class="button">
+                    <button class="converter" id="celsius">
+                        C
+                    </button>
                 </div>
-            <div class="row">
                 <div class="button">
                     <button class="converter" id="fahrenheit">
                         F
                     </button>
                 </div>
             </div>
-         </div>
 
 
             <div class="col-3">
-                <span id="cur-temp">57°F</span>
-                <div class="row">
-                    <span class="reduce-padding subtext">
-                            62°F | 49°F
-                    </span>
+                <span id="cur-temp">""</span>
+            </div>
+
+
+            <div class="col-3">
+                <span id="cur-emoji">""</span>
+                <div class="row reduce-padding subtext">
+                    <span class="reduce-padding subtext" id="cur-emoji-desc">""</span>
                 </div>
             </div>
 
 
             <div class="col-2">
-                <span id="cur-emoji">
-                    🌧
-                </span>
-                <div class="row">
-                    <span class="reduce-padding subtext" id="cur-emoji-desc">
-                        Rain
-                    </span>
+                <div class="row categories">
+                    Wind:
+                </div>
+                <div class="row categories">
+                    Humidity:
+                </div>
+                <div class="row categories">
+                    Sunrise:
+                </div>
+                <div class="row categories">
+                    Sunset:
                 </div>
             </div>
+
 
             <div class="col-3">
-                <div class="row cats">
-                    Wind
+                <div class="row cat-results">
+                    <span id="wind">""</span>
                 </div>
-                <div class="row cats">
-                    Humidity
+                <div class="row cat-results">
+                    <span id="humidity">""</span>
                 </div>
-                <div class="row cats">
-                    Percip.
+                <div class="row cat-results">
+                    <span id="sunrise">""</span>
                 </div>
-
-            
-
-            </div>
-            <div class="col-2">
-                <div class="row cat_results" id="wind">
-                    10 MPH
-                </div>
-                <div class="row cat_results" id="humidity">
-                    30%
-                </div>
-                <div class="row cat_results" id="percipitation">
-                    10%
+                <div class="row cat-results">
+                    <span id="sunset">""</span>
                 </div>
             </div>
         </div>
     
         <br />
     
-        <h2>
-            4 Day Forecast
-        </h2>
+    <h2>
+        4 Day Forecast
+    </h2>
         
-            <div class="row">
-                <div class="col-3">
-                    <div class="row forecast_day" id="d_for1">
-                        <p>Thursday</p>
-                    </div>
-                    <div class="row">
-                        <div class="card forecast_emo" id="e_for1">
-                        🌧
-                         <div class="card-body">
-                            <p class="card-text">Rain</p>
-                            </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="row">
+                    <span class="forecast-day" id="d_for1">Thursday</span>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <span class="forecast-emoji" id="e_for1">🌧</span>
+                    <div class="card-body">
+                        <p class="card-text subtext">
+                            <span id="desc_for1">Rain</span>
+                        </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-3">
-                     <div class="row forecast_day" id="d_for2">
-                        <p>Friday</p>
-                    </div>
-                    <div class="row">
-                        <div class="card forecast_emo" id="e_for2">
-                            🌧
-                            <div class="card-body">
-                                <p class="card-text">Rain</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="row forecast_day" id="d_for3">
-                        <p>Saturday</p>
-                    </div>
-                    <div class="row">
-                        <div class="card forecast_emo" id="e_for3">
-                            🌧
-                            <div class="card-body">
-                                <p class="card-text">Rain</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="row forecast_day" id="d_for4">
-                        <p>Sunday</p>
-                    </div>
-                    <div class="row">
-                        <div class="card forecast_emo" id="e_for4">
-                            🌧
-                            <div class="card-body">
-                                <p class="card-text">Rain</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
                 </div>
             </div>
+            <div class="col-3">
+                <div class="row">
+                    <span class="forecast-day" id="d_for2">Friday</span>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <span class="forecast-emoji" id="e_for2">🌧</span>
+                        <div class="card-body">
+                            <p class="card-text subtext">
+                                <span id="desc_for2">Rain</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <span class="forecast-day" id="d_for3">Saturday</span>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <span class="forecast-emoji" id="e_for3">🌧</span>
+                        <div class="card-body">
+                            <p class="card-text subtext">
+                                <span id="desc_for3">Rain</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <span class="forecast-day" id="d_for4">Sunday</span>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <span class="forecast-emoji" id="e_for4">🌧</span>
+                        <div class="card-body">
+                            <p class="card-text subtext">
+                                <span id="desc_for4">Rain</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+       
     </div>
     </div>
     <a href="https://github.com/ADCeres/final-project-weather-app">
     https://github.com/ADCeres/final-project-weather-app</a>
+    <br />
+    *Note: time fields do not yet take into account local location time of look-up city.
 <script src="src/script_api.js"></script>
 </body>
 </html>
