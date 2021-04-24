@@ -30,20 +30,7 @@ let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getPosition);
 
 
-//the function converts the Current Temperature into Fahrenheit (if it is in Celsius)
-function calculateFahrenheit () {
-    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    
-    let tempLen = currentTempUnit.length-2;    
-    let currentTemp = currentTempUnit.substring(0, tempLen);
-   
-    let newTemp = (currentTemp * (9/5) + 32);
-    newTemp = newTemp.toFixed(0);
-    
-    let newTempUnit = `${newTemp}°F`;
-    document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
-
-
+function calculateFeelFahrenheit() {
     let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
     let feelLen = currentFeel.length-2;    
         currentFeel = currentFeel.substring(0, feelLen);
@@ -55,20 +42,25 @@ function calculateFahrenheit () {
     document.querySelector("#cur-temp-feel").innerHTML = newFeel;
 }
 
-//the function converts the Current Temperature into Celsius (if it is in Fahrenheit)
-function calculateCelsius () {
+
+//the function converts the Current Temperature into Fahrenheit (if it is in Celsius)
+function calculateFahrenheit () {
     let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    
     let tempLen = currentTempUnit.length-2;    
     let currentTemp = currentTempUnit.substring(0, tempLen);
-
-    let newTemp = (currentTemp - 32) * (5/9);
-    newTemp = newTemp.toFixed(0);
-
-    let newTempUnit = `${newTemp}°C`;
+    let newTemp = (currentTemp * (9/5) + 32);
+        newTemp = newTemp.toFixed(0);
+    
+    let newTempUnit = `${newTemp}°F`;
     document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
 
+    calculateFeelFahrenheit()
 
+    testLog = document.querySelectorAll("#forecast-temp-max")
+    console.log(testLog)
+}
+
+function calculateFeelCelsius(){
     let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
     let feelLen = currentFeel.length-2;    
         currentFeel = currentFeel.substring(0, feelLen);
@@ -76,8 +68,27 @@ function calculateCelsius () {
     let newFeel = (currentFeel - 32) * (5/9);
         newFeel = newFeel.toFixed(0);
     
+ 
     newFeel = `${newFeel}°C`;
     document.querySelector("#cur-temp-feel").innerHTML = newFeel;
+}
+
+
+//the function converts the Current Temperature into Celsius (if it is in Fahrenheit)
+function calculateCelsius () {
+    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
+    let tempLen = currentTempUnit.length-2;    
+    let currentTemp = currentTempUnit.substring(0, tempLen);
+    let newTemp = (currentTemp - 32) * (5/9);
+        newTemp = newTemp.toFixed(0);
+
+    let newTempUnit = `${newTemp}°C`;
+    document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
+
+    calculateFeelCelsius()
+
+    testLog = document.querySelectorAll("#forecast-temp-max")
+    console.log(testLog)
 }
 
 //the function looks to confirm if the Current Temperature is in Fahrenheit
@@ -393,7 +404,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
     dateDisplay.innerHTML = showDayTime(new Date);
 
     initialCity();
-
 
 
 
