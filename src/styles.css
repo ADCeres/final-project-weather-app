@@ -120,7 +120,7 @@ form input {
   padding: 5px 0px;
   margin: 0px auto;
   margin-top: 2px;
-  height: 100%;
+  height: 45%;
   width: 100%;
 }
 
@@ -239,4 +239,21 @@ form input {
   font-weight: normal;
   margin: 0px 0px;
   padding: 0px 0px;
+}
+
+.footer {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-align: center;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+.hrNew {
+  width: 90%;
+  border-top: 1px dashed gray;
+  text-align: center;
+  margin: 20px auto;
+  background: #f7edb4;
+  opacity: 75%;
 }
