@@ -14,6 +14,7 @@ p {
 h1 {
   font-size: 48px;
   line-height: 48px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -23,7 +24,7 @@ h2 {
 }
 
 form input {
-  border: 2px solid black;
+  border: 1px solid black;
   font-family: "Roboto Slab", serif;
   line-height: 20px;
   font-size: 14px;
@@ -77,6 +78,10 @@ form input {
   padding: 0px 5px;
 }
 
+.col-3 {
+  text-align: left;
+}
+
 .card {
   box-shadow: 0px 0px 4px black;
   border: 1px solid #000;
@@ -105,7 +110,7 @@ form input {
 
 .container {
   box-shadow: 0px 0px 15px rgb(36, 34, 34);
-  border: 3px solid rgb(11, 11, 43);
+  border: 1px solid rgb(11, 11, 43);
   padding: 10px 20px 20px 20px;
   background: #f7edb4;
   border-radius: 15px;
@@ -149,13 +154,14 @@ form input {
 #cur-emoji {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 45px;
+  line-height: 45px;
   text-align: center;
 }
 
 #cur-emoji {
-  font-size: 55px;
+  font-size: 80px;
+  vertical-align: middle;
 }
 
 #current-location-button,
@@ -171,22 +177,24 @@ form input {
 }
 
 #cur-emoji-desc {
-  margin-top: 12px;
-  font-size: 14px;
+  margin-top: 5px;
+  font-size: 12px;
   font-family: "Roboto Slab", serif;
 }
 
 #cur-day-time {
-  margin-left: 10px;
+  margin-left: 35px;
   text-align: left;
 }
 
 #entry-line {
-  background: #e3e2fa;
+  background: #fff;
   font-style: italic;
+  font-weight: normal;
+  max-height: 40px;
   margin-right: 5px;
-  padding: 5px 10px;
-  width: 62%;
+  padding: 2px 10px;
+  width: 64%;
 }
 
 #submit-button,
@@ -199,16 +207,19 @@ form input {
 }
 
 #submit-button {
-  padding: 5px 10px;
+  padding: 2px 10px;
 }
 
 #current-location-button {
-  border-radius: 50px;
   margin-right: 5px;
-  max-height: 15px;
+  border-radius: 50%;
+  max-height: 40px;
   width: 5%;
+  padding: 0px 0px;
+  padding-bottom: 3px;
 }
 
+.converter:hover,
 #submit-button:hover,
 #current-location-button:hover {
   background: #ae9ac0;
@@ -242,7 +253,7 @@ form input {
 }
 
 .footer {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   font-size: 10px;
   text-align: center;
   margin: 0px 0px;
@@ -256,4 +267,10 @@ form input {
   margin: 20px auto;
   background: #f7edb4;
   opacity: 75%;
+}
+
+.sub-details {
+  font-family: "Roboto Slab", sans-serif;
+  padding-left: 5px;
+  font-size: 12px;
 }

@@ -24,8 +24,9 @@
 <body>
     <div class="border">
     <div class="container">
+        <span id="cur-day-time"></span>
         <form>
-            <input type="submit" value="" id="current-location-button">
+            <input type="submit" value="⌖" id="current-location-button">
             <input type="text" placeholder="Enter Name of City Here" id="entry-line" autofocus="on" autocomplete="off">
             <input type="submit" value="Change City" id="submit-button">
         </form>
@@ -34,10 +35,7 @@
         <h1 id="selected-city">
             ""
         </h1>
-        <div>
-            <span id="cur-day-time"></span>
-        </div>
-        <br />
+
     
         <div class="row">
             <div class="col-1">
@@ -52,10 +50,22 @@
 
             <div class="col-3">
                 <span id="cur-temp"></span>
+                <br />
+                <span class="sub-details">
+                    <span id="cur-temp-max">Feels:</span> 
+                    <span id="cur-temp-feel"></span>
+                </span>
+                <br />
+                <span class="sub-details">
+                    <strong>
+                    <span id="cur-emoji-desc"></span>
+                    </strong>
+                </span>
             </div>
 
 
             <div class="col-3">
+                <br />
                 <span id="cur-emoji"></span>
                 <div class="row">
                     <span id="cur-emoji-desc"></span>
@@ -96,20 +106,22 @@
         </div>
         <hr class="hrNew"/>
     <h2>
-        6 Day Forecast
+        6 Day Forecast (°F Only)
     </h2>
         <div id="forecast"></div>
         
         
     <br />
-    <div class="footer">♠️ Coded by Alyson Felton ♠️
+    <div class="footer"> Coded by Alyson Felton 
         <br />
         <a href="https://github.com/ADCeres/final-project-weather-app">
         https://github.com/ADCeres/final-project-weather-app</a>
+        <br />
+        *Note: time fields do not take into account local location time of look-up city.
     </div>
     </div>
     <br />
-    </div>*Note: time fields do not yet take into account local location time of look-up city.
+    </div>
 <script src="src/script_api.js"></script>
 </body>
 </html>
