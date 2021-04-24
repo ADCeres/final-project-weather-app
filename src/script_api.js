@@ -1,193 +1,173 @@
-
 //this section updates the Current Temperature & City through API
-function getCLInfo (response) {
-    let newCity = response.data.name;
-    let oldCity = document.querySelector("#selected-city");
-    document.querySelector("#entry-line").value = "";
-    oldCity.innerHTML = newCity;
+    function getCLInfo (response) {
+        let newCity = response.data.name;
+        let oldCity = document.querySelector("#selected-city");
+        document.querySelector("#entry-line").value = "";
+        oldCity.innerHTML = newCity;
 
-    getStats(response)
-}
+        getStats(response)
+    }
 
 //this function sends Geo-Location LAT and LON data to API Weather        
-function determinePosition (position) {
-    let apiKey = `a20670b64f2243817bd352afb3a3d0b5`;
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    function determinePosition (position) {
+        let apiKey = `a20670b64f2243817bd352afb3a3d0b5`;
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
 
-    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
-    axios.get(url).then(getCLInfo);
-}
+        let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        axios.get(url).then(getCLInfo);
+    }
 
 //this function intiates the Geo-Location grab
-function getPosition(event){
-    event.preventDefault ();
-    navigator.geolocation.getCurrentPosition(determinePosition);
-}
+    function getPosition(event){
+        event.preventDefault ();
+        navigator.geolocation.getCurrentPosition(determinePosition);
+    }
+
+    function calculateForecastMaxFahrenheit () {
+        let maxTempArray = document.querySelectorAll("#forecast-temp-max");   
+            arrayNumber = -1;
+
+        maxTempArray.forEach(function (){
+                arrayNumber = arrayNumber + 1;
+            let oldMax = maxTempArray[arrayNumber].innerHTML;
+            let tempLenOne = oldMax.length-2;    
+                oldMax = oldMax.substring(0, tempLenOne);
+
+            let newMax = (oldMax * (9/5) + 32);
+                newMax = newMax.toFixed(0);
+
+                maxTempArray[arrayNumber].innerHTML = `${newMax}°C`;
+        })
+    }
+
+    function calculateForecastMinFahrenheit () {
+        let minTempArray = document.querySelectorAll("#forecast-temp-min"); 
+            arrayNumber = -1;
+
+        minTempArray.forEach(function (){
+                arrayNumber = arrayNumber + 1;
+            let oldMin = minTempArray[arrayNumber].innerHTML;
+            let tempLenOne = oldMin.length-2;    
+                oldMin = oldMin.substring(0, tempLenOne);
+
+            let newMin = (oldMin * (9/5) + 32);
+
+                newMin = newMin.toFixed(0);
+
+                minTempArray[arrayNumber].innerHTML = `${newMin}°C`;
+        })
+    }
+
+    function calculateFeelFahrenheit() {
+        let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
+        let feelLen = currentFeel.length-2;    
+            currentFeel = currentFeel.substring(0, feelLen);
+
+        let newFeel = (currentFeel * (9/5) + 32);
+            newFeel = newFeel.toFixed(0);
         
-//this is the Event Listener button for the Current Location Button
-let currentLocation = document.querySelector("#current-location-button");
-currentLocation.addEventListener("click", getPosition);
-
-
-function calculateForecastMaxFahrenheit () {
-    let maxTempArray = document.querySelectorAll("#forecast-temp-max")   
-        arrayNumber = -1
-
-    maxTempArray.forEach(function (){
-            arrayNumber = arrayNumber + 1
-        let oldMax = maxTempArray[arrayNumber].innerHTML;
-        let tempLenOne = oldMax.length-2;    
-            oldMax = oldMax.substring(0, tempLenOne);
-
-        let newMax = (oldMax * (9/5) + 32)
-            newMax = newMax.toFixed(0)
-
-            maxTempArray[arrayNumber].innerHTML = `${newMax}°C`
-})
-}
-
-function calculateForecastMinFahrenheit () {
-    let minTempArray = document.querySelectorAll("#forecast-temp-min")   
-        arrayNumber = -1
-
-    minTempArray.forEach(function (){
-            arrayNumber = arrayNumber + 1
-        let oldMin = minTempArray[arrayNumber].innerHTML;
-        let tempLenOne = oldMin.length-2;    
-            oldMin = oldMin.substring(0, tempLenOne);
-
-        let newMin = (oldMin * (9/5) + 32)
-
-            newMin = newMin.toFixed(0)
-
-            minTempArray[arrayNumber].innerHTML = `${newMin}°C`
-})
-}
-
-
-
-function calculateFeelFahrenheit() {
-    let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
-    let feelLen = currentFeel.length-2;    
-        currentFeel = currentFeel.substring(0, feelLen);
-
-    let newFeel = (currentFeel * (9/5) + 32);
-        newFeel = newFeel.toFixed(0);
-    
-    newFeel = `${newFeel}°F`;
-    document.querySelector("#cur-temp-feel").innerHTML = newFeel;
-}
-
+        newFeel = `${newFeel}°F`;
+        document.querySelector("#cur-temp-feel").innerHTML = newFeel;
+    }
 
 //the function converts the Current Temperature into Fahrenheit (if it is in Celsius)
-function calculateFahrenheit () {
-    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    let tempLen = currentTempUnit.length-2;    
-    let currentTemp = currentTempUnit.substring(0, tempLen);
-    let newTemp = (currentTemp * (9/5) + 32);
-        newTemp = newTemp.toFixed(0);
-    
-    let newTempUnit = `${newTemp}°F`;
-    document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
+    function calculateFahrenheit () {
+        let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
+        let tempLen = currentTempUnit.length-2;    
+        let currentTemp = currentTempUnit.substring(0, tempLen);
+        let newTemp = (currentTemp * (9/5) + 32);
+            newTemp = newTemp.toFixed(0);
+        
+        let newTempUnit = `${newTemp}°F`;
+        document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
 
-    calculateFeelFahrenheit()
-    calculateForecastMaxFahrenheit()
-    calculateForecastMinFahrenheit()
-}
+        calculateFeelFahrenheit();
+        calculateForecastMaxFahrenheit();
+        calculateForecastMinFahrenheit();
+    }
 
-function calculateForecastMaxCelsius () {
-    let maxTempArray = document.querySelectorAll("#forecast-temp-max")   
-        arrayNumber = -1
+    function calculateForecastMaxCelsius () {
+        let maxTempArray = document.querySelectorAll("#forecast-temp-max");   
+            arrayNumber = -1;
 
-    maxTempArray.forEach(function (){
-            arrayNumber = arrayNumber + 1
-        let oldMax = maxTempArray[arrayNumber].innerHTML;
-        let tempLenOne = oldMax.length-2;    
-            oldMax = oldMax.substring(0, tempLenOne);
+        maxTempArray.forEach(function (){
+                arrayNumber = arrayNumber + 1;
+            let oldMax = maxTempArray[arrayNumber].innerHTML;
+            let tempLenOne = oldMax.length-2;    
+                oldMax = oldMax.substring(0, tempLenOne);
 
-        let newMax = (oldMax - 32) * (5/9)
-            newMax = newMax.toFixed(0)
+            let newMax = (oldMax - 32) * (5/9);
+                newMax = newMax.toFixed(0);
 
-            maxTempArray[arrayNumber].innerHTML = `${newMax}°C`
-})
-}
+                maxTempArray[arrayNumber].innerHTML = `${newMax}°C`;
+        })
+    }
 
-function calculateForecastMinCelsius () {
-    let minTempArray = document.querySelectorAll("#forecast-temp-min")   
-        arrayNumber = -1
+    function calculateForecastMinCelsius () {
+        let minTempArray = document.querySelectorAll("#forecast-temp-min") ;  
+            arrayNumber = -1;
 
-    minTempArray.forEach(function (){
-            arrayNumber = arrayNumber + 1
-        let oldMin = minTempArray[arrayNumber].innerHTML;
-        let tempLenOne = oldMin.length-2;    
-            oldMin = oldMin.substring(0, tempLenOne);
+        minTempArray.forEach(function (){
+                arrayNumber = arrayNumber + 1;
+            let oldMin = minTempArray[arrayNumber].innerHTML;
+            let tempLenOne = oldMin.length-2;    
+                oldMin = oldMin.substring(0, tempLenOne);
 
-        let newMin = (oldMin - 32) * (5/9)
-            newMin = newMin.toFixed(0)
+            let newMin = (oldMin - 32) * (5/9);
+                newMin = newMin.toFixed(0);
 
-            minTempArray[arrayNumber].innerHTML = `${newMin}°C`
-})
-}
+                minTempArray[arrayNumber].innerHTML = `${newMin}°C`;
+        })
+    }
 
+    function calculateFeelCelsius () {
+        let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
+        let feelLen = currentFeel.length-2;    
+            currentFeel = currentFeel.substring(0, feelLen);
 
-function calculateFeelCelsius () {
-    let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
-    let feelLen = currentFeel.length-2;    
-        currentFeel = currentFeel.substring(0, feelLen);
-
-    let newFeel = (currentFeel - 32) * (5/9);
-        newFeel = newFeel.toFixed(0);
-    
-    newFeel = `${newFeel}°C`;
-    document.querySelector("#cur-temp-feel").innerHTML = newFeel;
-}
+        let newFeel = (currentFeel - 32) * (5/9);
+            newFeel = newFeel.toFixed(0);
+        
+        newFeel = `${newFeel}°C`;
+        document.querySelector("#cur-temp-feel").innerHTML = newFeel;
+    }
 
 //the function converts the Current Temperature into Celsius (if it is in Fahrenheit)
-function calculateCelsius () {
-    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    let tempLen = currentTempUnit.length-2;    
-    let currentTemp = currentTempUnit.substring(0, tempLen);
-    let newTemp = (currentTemp - 32) * (5/9);
-        newTemp = newTemp.toFixed(0);
+    function calculateCelsius () {
+        let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
+        let tempLen = currentTempUnit.length-2;    
+        let currentTemp = currentTempUnit.substring(0, tempLen);
+        let newTemp = (currentTemp - 32) * (5/9);
+            newTemp = newTemp.toFixed(0);
 
-    let newTempUnit = `${newTemp}°C`;
-    document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
+        let newTempUnit = `${newTemp}°C`;
+        document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
 
-    calculateFeelCelsius()
-    calculateForecastMaxCelsius()
-    calculateForecastMinCelsius()
-}
+        calculateFeelCelsius();
+        calculateForecastMaxCelsius();
+        calculateForecastMinCelsius();
+    }
 
 //the function looks to confirm if the Current Temperature is in Fahrenheit
-function confirmUnitF (event) {
-    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    let currentUnit = currentTempUnit.slice(-1);
+    function confirmUnitF (event) {
+        let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
+        let currentUnit = currentTempUnit.slice(-1);
 
-    if (currentUnit === "F") {
-        calculateCelsius ()
-    } else {}
-}
+        if (currentUnit === "F") {
+            calculateCelsius ()
+        } else {}
+    }
 
 //the function looks to confirm if the Current Temperature is in Celsius
-function confirmUnitC (event) {
-    let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
-    let currentUnit = currentTempUnit.slice(-1);
+    function confirmUnitC (event) {
+        let currentTempUnit = document.querySelector("#cur-temp").innerHTML;
+        let currentUnit = currentTempUnit.slice(-1);
 
-    if (currentUnit === "C") {
-        calculateFahrenheit ()
-    } else {}
-}
-
-//this is the Event Listener button for the Fahrenheit to Celcius Conversion process
-let buttonConverterC = document.querySelector("#celsius");
-buttonConverterC.addEventListener("click", confirmUnitF);
-
-//this is the Event Listener button for the Celsius to Fahrenheit Conversion process
-let buttonConverterF = document.querySelector("#fahrenheit");
-buttonConverterF.addEventListener("click", confirmUnitC);
-
-
+        if (currentUnit === "C") {
+            calculateFahrenheit ()
+        } else {}
+    }
 
 //This section of code updates all the weather stats for a user-entered city
 
@@ -240,7 +220,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
             break;
         }
     }
-
 
     function updateWind (newWind) { 
         let oldWind = document.querySelector("#wind");
@@ -374,7 +353,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         forecastElement.innerHTML = forecastHTML
     }
 
-
     function updateForecast (newForecast) {
         let lat = newForecast.lat;
         let lon = newForecast.lon;
@@ -432,11 +410,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         dateDisplay.innerHTML = showDayTime(new Date);
     }   
 
-//this is the Event Listener button for the Change City Button
-    let changeCity = document.querySelector("#submit-button");
-    changeCity.addEventListener("click", triggerApi);
-
-
     function initialCity (){
         let newCity = "New York";
             updateCity(newCity);
@@ -467,7 +440,24 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         return formattedDate;
     }
 
+//this is the Event Listener button for the Change City Button
+    let changeCity = document.querySelector("#submit-button");
+    changeCity.addEventListener("click", triggerApi);
+
+//this is the Event Listener button for the Fahrenheit to Celcius Conversion process
+    let buttonConverterC = document.querySelector("#celsius");
+    buttonConverterC.addEventListener("click", confirmUnitF);
+
+//this is the Event Listener button for the Celsius to Fahrenheit Conversion process
+    let buttonConverterF = document.querySelector("#fahrenheit");
+    buttonConverterF.addEventListener("click", confirmUnitC);
+
+//this sequence queues the updating of the "Last Data Request" timestamp
     let dateDisplay = document.querySelector("#cur-day-time");
     dateDisplay.innerHTML = showDayTime(new Date);
+
+//this is the Event Listener button for the Current Location Button
+    let currentLocation = document.querySelector("#current-location-button");
+    currentLocation.addEventListener("click", getPosition);
 
     initialCity();
