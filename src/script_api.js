@@ -201,8 +201,18 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         console.log(response.data.daily)
         let days = determineForecastArray();
         let forecastHTML = `<div class="row"> `
+        let arrayNumber = -1
             
         days.forEach(function(day){
+            arrayNumber = arrayNumber + 1
+            
+            let minTemp = response.data.daily[arrayNumber].temp.min
+                minTemp = minTemp.toFixed(0)
+            let maxTemp = response.data.daily[arrayNumber].temp.max
+                maxTemp = maxTemp.toFixed(0)
+
+            console.log(minTemp)
+            console.log(maxTemp)
             forecastHTML = forecastHTML +
             `
             <div class="col-2">
@@ -212,8 +222,8 @@ buttonConverterF.addEventListener("click", confirmUnitC);
                         <span class="forecast-emoji">🌧</span>
                             <div class="card-body">
                                 <p class="card-text subtext">
-                                    <span id="forecast-temp-max">18</span>
-                                    <span id="forecast-temp-min">20</span>
+                                    <span id="forecast-temp-max">${maxTemp}°F</span>
+                                    <span id="forecast-temp-min">${minTemp}°F</span>
                                 </p>
                             </div>
                     </div>

@@ -202,3 +202,12 @@ form input {
 #current-location-button:hover {
   background: #ae9ac0;
 }
+
+#forecast-temp-min {
+  font-weight: normal;
+  font-size: 10px;
+}
+
+#forecast-temp-max {
+  font-size: 10px;
+}
