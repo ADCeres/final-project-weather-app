@@ -30,6 +30,43 @@ let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getPosition);
 
 
+function calculateForecastMaxFahrenheit () {
+    let maxTempArray = document.querySelectorAll("#forecast-temp-max")   
+        arrayNumber = -1
+
+    maxTempArray.forEach(function (){
+            arrayNumber = arrayNumber + 1
+        let oldMax = maxTempArray[arrayNumber].innerHTML;
+        let tempLenOne = oldMax.length-2;    
+            oldMax = oldMax.substring(0, tempLenOne);
+
+        let newMax = (oldMax * (9/5) + 32)
+            newMax = newMax.toFixed(0)
+
+            maxTempArray[arrayNumber].innerHTML = `${newMax}°C`
+})
+}
+
+function calculateForecastMinFahrenheit () {
+    let minTempArray = document.querySelectorAll("#forecast-temp-min")   
+        arrayNumber = -1
+
+    minTempArray.forEach(function (){
+            arrayNumber = arrayNumber + 1
+        let oldMin = minTempArray[arrayNumber].innerHTML;
+        let tempLenOne = oldMin.length-2;    
+            oldMin = oldMin.substring(0, tempLenOne);
+
+        let newMin = (oldMin * (9/5) + 32)
+
+            newMin = newMin.toFixed(0)
+
+            minTempArray[arrayNumber].innerHTML = `${newMin}°C`
+})
+}
+
+
+
 function calculateFeelFahrenheit() {
     let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
     let feelLen = currentFeel.length-2;    
@@ -55,12 +92,46 @@ function calculateFahrenheit () {
     document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
 
     calculateFeelFahrenheit()
-
-    testLog = document.querySelectorAll("#forecast-temp-max")
-    console.log(testLog)
+    calculateForecastMaxFahrenheit()
+    calculateForecastMinFahrenheit()
 }
 
-function calculateFeelCelsius(){
+function calculateForecastMaxCelsius () {
+    let maxTempArray = document.querySelectorAll("#forecast-temp-max")   
+        arrayNumber = -1
+
+    maxTempArray.forEach(function (){
+            arrayNumber = arrayNumber + 1
+        let oldMax = maxTempArray[arrayNumber].innerHTML;
+        let tempLenOne = oldMax.length-2;    
+            oldMax = oldMax.substring(0, tempLenOne);
+
+        let newMax = (oldMax - 32) * (5/9)
+            newMax = newMax.toFixed(0)
+
+            maxTempArray[arrayNumber].innerHTML = `${newMax}°C`
+})
+}
+
+function calculateForecastMinCelsius () {
+    let minTempArray = document.querySelectorAll("#forecast-temp-min")   
+        arrayNumber = -1
+
+    minTempArray.forEach(function (){
+            arrayNumber = arrayNumber + 1
+        let oldMin = minTempArray[arrayNumber].innerHTML;
+        let tempLenOne = oldMin.length-2;    
+            oldMin = oldMin.substring(0, tempLenOne);
+
+        let newMin = (oldMin - 32) * (5/9)
+            newMin = newMin.toFixed(0)
+
+            minTempArray[arrayNumber].innerHTML = `${newMin}°C`
+})
+}
+
+
+function calculateFeelCelsius () {
     let currentFeel = document.querySelector("#cur-temp-feel").innerHTML;
     let feelLen = currentFeel.length-2;    
         currentFeel = currentFeel.substring(0, feelLen);
@@ -68,11 +139,9 @@ function calculateFeelCelsius(){
     let newFeel = (currentFeel - 32) * (5/9);
         newFeel = newFeel.toFixed(0);
     
- 
     newFeel = `${newFeel}°C`;
     document.querySelector("#cur-temp-feel").innerHTML = newFeel;
 }
-
 
 //the function converts the Current Temperature into Celsius (if it is in Fahrenheit)
 function calculateCelsius () {
@@ -86,9 +155,8 @@ function calculateCelsius () {
     document.querySelector("#cur-temp").innerHTML = `${newTempUnit}`;
 
     calculateFeelCelsius()
-
-    testLog = document.querySelectorAll("#forecast-temp-max")
-    console.log(testLog)
+    calculateForecastMaxCelsius()
+    calculateForecastMinCelsius()
 }
 
 //the function looks to confirm if the Current Temperature is in Fahrenheit
@@ -317,7 +385,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
     }
 
     function getStats (response) {
-        console.log(response)
         let newTemp = response.data.main.temp;
         let newFeel = response.data.main.feels_like;
         let newWeather = response.data.weather[0].main;
@@ -404,21 +471,3 @@ buttonConverterF.addEventListener("click", confirmUnitC);
     dateDisplay.innerHTML = showDayTime(new Date);
 
     initialCity();
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
