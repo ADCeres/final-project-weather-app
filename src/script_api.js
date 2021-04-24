@@ -1,12 +1,4 @@
 
-//the following sections updates the ID: #cur-day-time with the current information
-//the date/time if formatted: DAY, MONTH DATE, HOUR:MINUTE AM/PM
-
-
-//this function generates remaining date data and returns fully formatted date display
-
-
-
 //this section updates the Current Temperature & City through API
 function getCLInfo (response) {
     console.log(response.data);
@@ -204,6 +196,46 @@ buttonConverterF.addEventListener("click", confirmUnitC);
             oldSunset.innerHTML = fullSunset;
     }
     
+    function displayForecast (response) {
+        let forecastElement = document.querySelector("#forecast");
+        console.log(response.data.daily)
+        let days = determineForecastArray();
+        let forecastHTML = `<div class="row"> `
+            
+        days.forEach(function(day){
+            forecastHTML = forecastHTML +
+            `
+            <div class="col-2">
+                <span class="forecast-day">${day}</span>
+                <div class="row">
+                    <div class="card">
+                        <span class="forecast-emoji">🌧</span>
+                            <div class="card-body">
+                                <p class="card-text subtext">
+                                    <span id="forecast-temp-max">18</span>
+                                    <span id="forecast-temp-min">20</span>
+                                </p>
+                            </div>
+                    </div>
+                </div>  
+            </div>   
+            `
+        })
+
+        forecastHTML = forecastHTML + `</div>`
+        forecastElement.innerHTML = forecastHTML
+    }
+
+
+    function updateForecast (newForecast) {
+        let lat = newForecast.lat;
+        let lon = newForecast.lon;
+
+        let apiKey = `a20670b64f2243817bd352afb3a3d0b5`;
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,alerts&units=imperial&appid=${apiKey}`;
+        axios.get(url).then(displayForecast);
+    }
+
     function getStats (response) {
         let newTemp = response.data.main.temp;
         let newWeather = response.data.weather[0].main;
@@ -211,6 +243,7 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         let newHumidity = response.data.main.humidity;
         let newSunrise = response.data.sys.sunrise;
         let newSunset = response.data.sys.sunset;
+        let newForecast = response.data.coord
             updateTemp(newTemp);
             updateWeather(newWeather);
             updateEmoji(newWeather);
@@ -218,6 +251,7 @@ buttonConverterF.addEventListener("click", confirmUnitC);
             updateHumidity(newHumidity);
             updateSunrise(newSunrise);
             updateSunset(newSunset);
+            updateForecast(newForecast)
     }
 
     function updateCity (newCity) {
@@ -258,25 +292,80 @@ buttonConverterF.addEventListener("click", confirmUnitC);
             axios.get(url).then(getStats);
     }   
 
-    initialCity();
+    function determineDay (day) {
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        return days[day]
+    }
+
+    function determineMonth (month) {
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        return months[month]
+    }
 
     function showDayTime (date) {
-
-        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
-        let currentDay = days[date.getDay()];
-        let currentMonth = months[date.getMonth()];
+        let convertedDay = determineDay(date.getDay())
+        let convertedMonth = determineMonth(date.getMonth())
+        let convertedMinute = convertMinutes(date.getMinutes());
+        let convertedHour = convertHour(date.getHours());
+        let am_or_pm = defineAM_PM(date.getHours());
         let currentDate = date.getDate();
-        let currentHour = date.getHours();
-            convertedHour = convertHour(currentHour);
-        let currentMinute = date.getMinutes();
-            convertedMinute = convertMinutes(currentMinute);
-        let am_or_pm = defineAM_PM(currentHour);
 
-        let formattedDate = `${currentDay}, ${currentMonth} ${currentDate}, ${convertedHour}:${currentMinute}${am_or_pm}`;
+        let formattedDate = `${convertedDay}, ${convertedMonth} ${currentDate}, ${convertedHour}:${convertedMinute}${am_or_pm}`;
         return formattedDate;
     }
 
     let dateDisplay = document.querySelector("#cur-day-time");
     dateDisplay.innerHTML = showDayTime(new Date);
+
+    initialCity();
+
+
+
+
+   
+    function determineForecastArray () {
+
+        let date = new Date;
+        let currentDay = date.getDay();
+
+        switch (currentDay) {
+        case 0:
+            return ["Mon", "Tue","Wed","Thu", "Fri", "Sat"]
+            break;
+        case 1:
+            return ["Tue","Wed","Thu", "Fri", "Sat", "Sun"]
+            break;
+        case 2:
+            return ["Wed","Thu", "Fri", "Sat", "Sun", "Mon"]
+            break;
+        case 3:
+            return ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"]
+            break;
+        case 4:
+            return ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"]
+            break;
+        case 5:
+            return ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"]
+            break;
+        case 6:
+            return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
+            break;
+        default:
+            return ["Error","Error","Error","Error","Error","Error"]
+            break;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+  
