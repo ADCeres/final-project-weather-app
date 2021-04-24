@@ -138,6 +138,38 @@ buttonConverterF.addEventListener("click", confirmUnitC);
         }
     }
 
+    function updateEmojiLoop (newWeather) {
+        let newEmoji = document.querySelector("#cur-emoji");     
+
+        switch (newWeather) {
+        case "Clouds":
+            return "☁️";
+            break;
+        case "Rain":
+            return "🌧";
+            break;
+        case "Sunny":
+            return "☀️";
+            break;
+        case "Snow":
+            return "❄️";
+            break;
+        case "Extreme":
+            return "❗";
+            break;
+        case "Windy":
+            return "💨";
+            break;
+        case "Clear":
+            return "☀️";
+            break;
+        default:
+            return "❗❗";
+            break;
+        }
+    }
+
+
     function updateWind (newWind) { 
         let oldWind = document.querySelector("#wind");
         newWind = newWind.toFixed(0);
@@ -198,7 +230,6 @@ buttonConverterF.addEventListener("click", confirmUnitC);
     
     function displayForecast (response) {
         let forecastElement = document.querySelector("#forecast");
-        console.log(response.data.daily)
         let days = determineForecastArray();
         let forecastHTML = `<div class="row"> `
         let arrayNumber = -1
@@ -210,22 +241,25 @@ buttonConverterF.addEventListener("click", confirmUnitC);
                 minTemp = minTemp.toFixed(0)
             let maxTemp = response.data.daily[arrayNumber].temp.max
                 maxTemp = maxTemp.toFixed(0)
+            let emojiDesc = response.data.daily[arrayNumber].weather[0].main
+            let emoji = updateEmojiLoop(emojiDesc)
 
-            console.log(minTemp)
-            console.log(maxTemp)
             forecastHTML = forecastHTML +
             `
             <div class="col-2">
                 <span class="forecast-day">${day}</span>
                 <div class="row">
                     <div class="card">
-                        <span class="forecast-emoji">🌧</span>
-                            <div class="card-body">
-                                <p class="card-text subtext">
-                                    <span id="forecast-temp-max">${maxTemp}°F</span>
-                                    <span id="forecast-temp-min">${minTemp}°F</span>
-                                </p>
-                            </div>
+                        <div class="card-body">
+                            <p class="card-text subtext">
+                                <span id="forecast-emoji">${emoji}</span>
+                                <br />
+                                <span id="forecast-desc">${emojiDesc}</span>
+                                <br />
+                                <span id="forecast-temp-max">${maxTemp}°F</span> |
+                                <span id="forecast-temp-min">${minTemp}°F</span>
+                            </p>
+                        </div>
                     </div>
                 </div>  
             </div>   

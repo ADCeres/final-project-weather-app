@@ -57,7 +57,7 @@ form input {
 .converter,
 .subtext,
 .card-text {
-  font-family: monospace;
+  font-family: "Roboto Slab", serif;
 }
 
 .forecast-day,
@@ -139,7 +139,8 @@ form input {
 
 #cur-day-time,
 #cur-temp,
-#cur-emoji #cur-emoji-desc {
+#cur-emoji,
+#cur-emoji-desc {
   margin: 0px 0px;
   padding: 0px 0px;
 }
@@ -153,6 +154,10 @@ form input {
   text-align: center;
 }
 
+#cur-emoji {
+  font-size: 55px;
+}
+
 #current-location-button,
 #submit-button,
 #entry-line {
@@ -163,6 +168,12 @@ form input {
 #cur-emoji-desc {
   font-family: monospace;
   font-size: 12px;
+}
+
+#cur-emoji-desc {
+  margin-top: 12px;
+  font-size: 14px;
+  font-family: "Roboto Slab", serif;
 }
 
 #cur-day-time {
@@ -206,8 +217,26 @@ form input {
 #forecast-temp-min {
   font-weight: normal;
   font-size: 10px;
+  margin: 0px 0px;
+  padding: 0px 0px;
 }
 
 #forecast-temp-max {
   font-size: 10px;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+#forecast-desc {
+  font-weight: normal;
+  font-size: 10px;
+}
+
+#forecast-emoji {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  margin: 0px 0px;
+  padding: 0px 0px;
 }
