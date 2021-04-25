@@ -33,16 +33,14 @@ form input {
   font-weight: bold;
 }
 
-.row,
-.card,
 .card-body,
-.card-img-top,
 .card-text,
 .cat-results,
 .categories,
 .forecast-day,
-.forecast-emoji,
-.reduce-padding {
+.reduce-padding,
+.footer,
+.row {
   margin: 0px 0px;
   padding: 0px 0px;
 }
@@ -54,16 +52,24 @@ form input {
 }
 
 .forecast-day,
-.forecast-emoji,
-.converter,
-.subtext,
-.card-text {
-  font-family: "Roboto Slab", serif;
-}
-
-.forecast-day,
+.card-text,
 .converter,
 .subtext {
+  font-family: "Roboto Slab", serif;
+  font-size: 12px;
+}
+
+.categories,
+.cat-results {
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.footer,
+.sub-details,
+#cur-emoji-desc {
+  font-family: "Roboto Slab", sans-serif;
   font-size: 12px;
 }
 
@@ -82,25 +88,8 @@ form input {
   text-align: left;
 }
 
-.card {
-  box-shadow: 0px 0px 4px black;
-  border: 1px solid #000;
-  text-align: center;
-  background: #fff;
-  font-size: 12px;
-  color: #000;
-  width: 100%;
-}
-
 .card-text {
   padding-bottom: 10px;
-}
-
-.categories,
-.cat-results {
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  font-size: 14px;
 }
 
 .cat-results {
@@ -129,29 +118,58 @@ form input {
   width: 100%;
 }
 
-.forecast-emoji {
+.footer {
   text-align: center;
-  padding-top: 5px;
-  font-size: 40px;
+  font-size: 10px;
+}
+
+.hrNew {
+  border-top: 1px dashed gray;
+  background: #f7edb4;
+  text-align: center;
+  margin: 20px auto;
+  opacity: 75%;
+  width: 90%;
+}
+
+.sub-details {
+  padding-left: 5px;
 }
 
 .converter,
+#current-location-button,
 #entry-line,
-#submit-button,
-#current-location-button {
+#submit-button {
   box-shadow: 0px 0px 4px black;
 }
 
+.converter:hover,
+#submit-button:hover,
+#current-location-button:hover {
+  background: #ae9ac0;
+}
+
+#forecast-desc,
+#forecast-temp-min,
+#forecast-temp-max {
+  font-weight: normal;
+  font-size: 10px;
+}
+
 #cur-day-time,
-#cur-temp,
 #cur-emoji,
-#cur-emoji-desc {
+#cur-emoji-desc,
+#current-location-button,
+#cur-temp,
+#forecast-temp-min,
+#forecast-temp-max,
+#forecast-emoji {
   margin: 0px 0px;
   padding: 0px 0px;
 }
 
-#cur-temp,
-#cur-emoji {
+#cur-emoji,
+#cur-temp {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 45px;
@@ -159,32 +177,43 @@ form input {
   text-align: center;
 }
 
-#cur-emoji {
-  font-size: 80px;
+#entry-line,
+#cur-emoji,
+#current-location-button,
+#submit-button {
   vertical-align: middle;
 }
 
 #current-location-button,
-#submit-button,
-#entry-line {
-  vertical-align: middle;
+#submit-button {
+  transition: all 150ms ease;
+  font-family: "Roboto Slab";
+  font-weight: normal;
+  background: #fff;
+  font-size: 15px;
 }
 
-#cur-day-time,
-#cur-emoji-desc {
+#cur-day-time {
   font-family: monospace;
   font-size: 12px;
+  margin-left: 35px;
+  text-align: left;
+}
+
+#cur-emoji {
+  font-size: 80px;
 }
 
 #cur-emoji-desc {
   margin-top: 5px;
-  font-size: 12px;
-  font-family: "Roboto Slab", serif;
 }
 
-#cur-day-time {
-  margin-left: 35px;
-  text-align: left;
+#current-location-button {
+  padding-bottom: 3px;
+  border-radius: 50%;
+  margin-right: 5px;
+  max-height: 40px;
+  width: 5%;
 }
 
 #entry-line {
@@ -197,80 +226,17 @@ form input {
   width: 64%;
 }
 
-#submit-button,
-#current-location-button {
-  transition: all 150ms ease;
-  font-family: "Roboto Slab";
+#forecast-emoji {
+  font-family: "Roboto", sans-serif;
   font-weight: normal;
-  background: #fff;
-  font-size: 15px;
+  text-align: center;
+  font-size: 40px;
+}
+
+#forecast-temp-max {
+  font-weight: bold;
 }
 
 #submit-button {
   padding: 2px 10px;
-}
-
-#current-location-button {
-  margin-right: 5px;
-  border-radius: 50%;
-  max-height: 40px;
-  width: 5%;
-  padding: 0px 0px;
-  padding-bottom: 3px;
-}
-
-.converter:hover,
-#submit-button:hover,
-#current-location-button:hover {
-  background: #ae9ac0;
-}
-
-#forecast-temp-min {
-  font-weight: normal;
-  font-size: 10px;
-  margin: 0px 0px;
-  padding: 0px 0px;
-}
-
-#forecast-temp-max {
-  font-size: 10px;
-  margin: 0px 0px;
-  padding: 0px 0px;
-}
-
-#forecast-desc {
-  font-weight: normal;
-  font-size: 10px;
-}
-
-#forecast-emoji {
-  text-align: center;
-  font-size: 40px;
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
-  margin: 0px 0px;
-  padding: 0px 0px;
-}
-
-.footer {
-  font-family: "Roboto Slab", sans-serif;
-  font-size: 10px;
-  text-align: center;
-  margin: 0px 0px;
-  padding: 0px 0px;
-}
-
-.hrNew {
-  width: 90%;
-  border-top: 1px dashed gray;
-  text-align: center;
-  margin: 20px auto;
-  background: #f7edb4;
-  opacity: 75%;
-}
-
-.sub-details {
-  font-family: "Roboto Slab", sans-serif;
-  padding-left: 5px;
-  font-size: 12px;
 }
