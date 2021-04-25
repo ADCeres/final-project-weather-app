@@ -206,6 +206,18 @@
         case "Snow":
             return "❄️";
             break;
+        case "Storm":
+            return "⛈";
+            break;
+        case "Tornado":
+            return "🌪";
+            break;
+        case "Hail":
+            return "🌨";
+            break;
+        case "Fog":
+            return "🌫";
+            break;
         case "Extreme":
             return "❗";
             break;
