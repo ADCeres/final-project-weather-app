@@ -10,9 +10,12 @@
 
 //this function sends Geo-Location LAT and LON data to API Weather        
     function determinePosition (position) {
+        console.log(position)
         let apiKey = `a20670b64f2243817bd352afb3a3d0b5`;
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
+        console.log(lat)
+        console.log(lon)
 
         let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
         axios.get(url).then(getCLInfo);
