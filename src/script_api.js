@@ -17,7 +17,7 @@
         console.log(lat)
         console.log(lon)
 
-        let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
         axios.get(url).then(getCLInfo);
     }
 
